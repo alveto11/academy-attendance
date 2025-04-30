@@ -1,36 +1,81 @@
-
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>أكاديمية الفيتو - تسجيل الحضور</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>نظام الحضور - أكاديمية الفيتو</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: white;
+      color: #222;
+      margin: 0;
+      padding: 2rem;
+      background-image: url('background-pattern.png');
+      background-size: cover;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      border: 1px solid #000;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #1a237e;
+    }
+    input[type="password"], button {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #fbc02d;
+      border: none;
+      color: #000;
+      cursor: pointer;
+    }
+    .note {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="شعار الأكاديمية" class="logo">
-        <h1>أكاديمية الفيتو</h1>
-    </header>
+  <div class="container">
+    <h1>بوابة الحضور - أكاديمية الفيتو</h1>
+    <form onsubmit="return redirectToForm(event)">
+      <input type="password" id="code" placeholder="أدخل رمز الدخول" required />
+      <button type="submit">دخول</button>
+    </form>
+    <div class="note">
+      تابعنا على TikTok و Snapchat و Instagram: <strong>@vet.o11</strong><br />
+      جميع الحقوق محفوظة © 2025 أكاديمية الفيتو
+    </div>
+  </div>
 
-    <main>
-        <h2>تسجيل الدخول</h2>
-        <form id="loginForm">
-            <label>رمز الدخول:</label>
-            <input type="password" id="code" required>
-            <button type="submit">دخول</button>
-        </form>
-        <p id="error" style="color:red;"></p>
-    </main>
-
-    <footer>
-        <p>جميع الحقوق محفوظة لأكاديمية الفيتو © 2025</p>
-        <div class="social">
-            <a href="https://www.tiktok.com/@vet.o11">TikTok</a> |
-            <a href="https://www.snapchat.com/add/vet.o11">Snapchat</a> |
-            <a href="https://www.instagram.com/vet.o11">Instagram</a>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script>
+    function redirectToForm(event) {
+      event.preventDefault();
+      const code = document.getElementById("code").value;
+      const forms = {
+        "1234": "https://forms.gle/xxxxxxxx", // أحمد الجهني
+        "123":  "https://forms.gle/xxxxxxxx", // عمران نور
+        "12":   "https://forms.gle/xxxxxxxx", // باسم الصاعدي
+        "1":    "https://forms.gle/xxxxxxxx", // الإداري
+      };
+      if (forms[code]) {
+        window.location.href = forms[code];
+      } else {
+        alert("رمز الدخول غير صحيح");
+      }
+    }
+  </script>
 </body>
 </html>
